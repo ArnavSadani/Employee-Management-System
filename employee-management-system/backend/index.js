@@ -20,6 +20,17 @@ app.get('/', (req, res) => {
 const employeeRoutes = require("./routes/employeeRoutes");
 app.use("/api/employees", employeeRoutes);
 
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
+const attendanceRoutes = require("./routes/attendanceRoutes");
+app.use("/api/attendance", attendanceRoutes);
+
+const leaveRoutes = require("./routes/leaveRoutes");
+app.use("/api/leaves", leaveRoutes);
+
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
