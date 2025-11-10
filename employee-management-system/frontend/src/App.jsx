@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 import EmployeeForm from "./components/EmployeeForm";
-import EmployeeList from "./components/EmployeeList";
+
 import ApplyLeave from "./components/ApplyLeave";
 import ManageLeaves from "./components/ManageLeaves";
 import AdminLogin from "./components/AdminLogin";
@@ -22,7 +22,7 @@ const App = () => {
               <>
                 <h1>Employee Management System</h1>
                 <EmployeeForm />
-                {/* <EmployeeList /> */}
+             
               </>
             }
           />
