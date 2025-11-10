@@ -11,6 +11,7 @@ const EmployeeForm = ({ selected, onSuccess }) => {
    const [editMode, setEditMode] = useState(false);
   const [employees, setEmployees] = useState([]);
   const { isAdmin } = useContext(AdminContext);
+  const [showtable,setshowtable] = useState(false);
 
   const fetchEmployees = async () => {
     const res = await getEmployees();
@@ -114,7 +115,10 @@ const EmployeeForm = ({ selected, onSuccess }) => {
           </button>
         )}
       </form>
-      <div>
+      <br></br>
+      <br></br>
+      <button onClick={() => setshowtable(!showtable)}>{showtable?"Hide Employee List":"Show Employee List"}</button>
+      {showtable && <div>
         <h2>Employee List</h2>
         <table border="1" cellPadding="10">
           <thead>
@@ -144,6 +148,7 @@ const EmployeeForm = ({ selected, onSuccess }) => {
           </tbody>
         </table>
       </div>
+}
     </>
 
 
