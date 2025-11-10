@@ -1,33 +1,41 @@
-import React, { useState } from "react";
-import EmployeeList from "./components/EmployeeList";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
 import EmployeeForm from "./components/EmployeeForm";
+import EmployeeList from "./components/EmployeeList";
 import ApplyLeave from "./components/ApplyLeave";
 import ManageLeaves from "./components/ManageLeaves";
+import AdminLogin from "./components/AdminLogin";
 
 const App = () => {
-  const [selectedEmp, setSelectedEmp] = useState(null);
-  const [refresh, setRefresh] = useState(false);
-
-  const handleEdit = (emp) => setSelectedEmp(emp);
-  const handleSuccess = () => {
-    setSelectedEmp(null);
-    setRefresh(!refresh);
-  };
-
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Employee Management System</h1>
+    <Router>
+      <Navbar />
 
-      {/* Employee Management Section */}
-      <EmployeeForm selected={selectedEmp} onSuccess={handleSuccess} />
-      <EmployeeList onEdit={handleEdit} key={refresh} />
+      <div style={{ padding: "20px" }}>
+        <Routes>
+          {/* Home Page → EmployeeForm + EmployeeList */}
+          <Route
+            path="/"
+            element={
+              <>
+                <h1>Employee Management System</h1>
+                <EmployeeForm />
+                {/* <EmployeeList /> */}
+              </>
+            }
+          />
 
-      {/* Leave Management Section */}
-      <hr />
-      <ApplyLeave />
-      <hr />
-      <ManageLeaves />
-    </div>
+          {/* Leave Apply Page */}
+          <Route path="/apply-leave" element={<ApplyLeave />} />
+
+          {/* Admin Leave Management Page */}
+          <Route path="/manage-leaves" element={<ManageLeaves />} />
+                <Route path="/admin-login" element={<AdminLogin />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 

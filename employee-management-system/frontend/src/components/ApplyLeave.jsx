@@ -17,7 +17,7 @@ const ApplyLeave = () => {
     e.preventDefault();
     await applyLeave(form);
     alert("Leave Request Submitted!");
-    setForm({ employee: "", fromDate: "", toDate: "", reason: "" });
+    setForm({ email: "", fromDate: "", toDate: "", reason: "" });
   };
 
   return (
@@ -25,10 +25,10 @@ const ApplyLeave = () => {
       <h2>Apply Leave</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
-          name="employee"
-          placeholder="Employee ID"
-          value={form.employee}
+          type="email"
+          name="email"
+          placeholder="Employee Email"
+          value={form.email}
           onChange={handleChange}
           required
         />

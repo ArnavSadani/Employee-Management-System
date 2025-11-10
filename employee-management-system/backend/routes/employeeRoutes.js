@@ -3,21 +3,26 @@ const express = require("express");
 const router = express.Router();
 const Employee = require("../models/Employee");
 
-// ➕ Add Employee
 router.post("/add", async (req, res) => {
-  try {
+  try {  // ✅ ADD THIS
+
     const newEmp = new Employee(req.body);
     await newEmp.save();
+
     res.status(201).json(newEmp);
   } catch (error) {
+  // ✅ ADD THIS
     res.status(500).json({ message: error.message });
   }
 });
+
 
 // 📋 Get All Employees
 router.get("/", async (req, res) => {
   try {
     const employees = await Employee.find();
+
+
     res.json(employees);
   } catch (error) {
     res.status(500).json({ message: error.message });

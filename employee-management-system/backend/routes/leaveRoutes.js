@@ -16,7 +16,7 @@ router.post("/apply", async (req, res) => {
 // 📋 Get all leaves (Admin)
 router.get("/", async (req, res) => {
   try {
-    const leaves = await Leave.find().populate("employee", "name email");
+    const leaves = await Leave.find();
     res.json(leaves);
   } catch (error) {
     res.status(500).json({ message: error.message });

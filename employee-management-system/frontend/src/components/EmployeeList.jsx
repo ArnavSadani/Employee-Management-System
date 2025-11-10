@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext } from "react";
 import { getEmployees, deleteEmployee } from "../services/api";
+import { AdminContext } from "../context/AdminContext";
+
 
 const EmployeeList = ({ onEdit }) => {
   const [employees, setEmployees] = useState([]);
+    const { isAdmin } = useContext(AdminContext);
+
 
   const fetchEmployees = async () => {
     const res = await getEmployees();
+    console.log("Fetched employees:", res.data);
     setEmployees(res.data);
   };
 
@@ -28,7 +33,7 @@ const EmployeeList = ({ onEdit }) => {
             <th>Email</th>
             <th>Position</th>
             <th>Salary</th>
-            <th>Actions</th>
+             {isAdmin && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
@@ -38,10 +43,12 @@ const EmployeeList = ({ onEdit }) => {
               <td>{emp.email}</td>
               <td>{emp.position}</td>
               <td>{emp.salary}</td>
-              <td>
-                <button onClick={() => onEdit(emp)}>Edit</button>
-                <button onClick={() => handleDelete(emp._id)}>Delete</button>
-              </td>
+              {isAdmin && (
+                <td>
+                  <button onClick={() => onEdit(emp)}>Edit</button>
+                  <button onClick={() => handleDelete(emp._id)}>Delete</button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
