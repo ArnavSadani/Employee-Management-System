@@ -3,6 +3,7 @@ import { getAllLeaves, updateLeaveStatus } from "../services/leaveApi";
 
 const ManageLeaves = () => {
   const [leaves, setLeaves] = useState([]);
+  const [status, setStatus] = useState(leaves.status);
 
   const fetchLeaves = async () => {
     const res = await getAllLeaves();
@@ -24,34 +25,34 @@ const ManageLeaves = () => {
       <table border="1" cellPadding="10">
         <thead>
           <tr>
-            <th>Employee</th>
+            <th>Employee Email</th>
             <th>From</th>
             <th>To</th>
             <th>Reason</th>
             <th>Status</th>
-            <th>Actions</th>
+            {status==="Pending" && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
           {leaves.map((leave) => (
             <tr key={leave._id}>
-              <td>{leave.employee?.name}</td>
+              <td>{leave.email}</td>
               <td>{new Date(leave.fromDate).toLocaleDateString()}</td>
               <td>{new Date(leave.toDate).toLocaleDateString()}</td>
               <td>{leave.reason}</td>
               <td>{leave.status}</td>
-              <td>
+              
                 {leave.status === "Pending" && (
-                  <>
+                  <td>
                     <button onClick={() => handleStatus(leave._id, "Approved")}>
                       Approve
                     </button>
                     <button onClick={() => handleStatus(leave._id, "Rejected")}>
                       Reject
                     </button>
-                  </>
+                  </td>
                 )}
-              </td>
+              
             </tr>
           ))}
         </tbody>
