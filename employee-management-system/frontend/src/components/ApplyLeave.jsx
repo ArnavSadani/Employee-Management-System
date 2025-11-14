@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { applyLeave } from "../services/leaveApi";
+import { useAuth } from "../context/UserContext";
 
 const ApplyLeave = () => {
+  const { email } = useAuth();  
   const [form, setForm] = useState({
-    employee: "",
+    email: email,
     fromDate: "",
     toDate: "",
     reason: "",

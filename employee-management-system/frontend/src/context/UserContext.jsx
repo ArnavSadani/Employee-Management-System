@@ -1,12 +1,14 @@
 // src/context/AuthContext.jsx
 import { createContext, useState, useContext } from "react";
 
+
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [email, setEmail] = useState(null);      
   const [userId, setUserId] = useState(null);    
-  const [token, setToken] = useState(null);      
+  const [token, setToken] = useState(null);  
+      
 
   const login = (email, userId, token) => {
     setEmail(email);
@@ -19,16 +21,18 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem("token", token);
   };
 
-  const logout = () => {
+  const logoutuser = () => {
     setEmail(null);
     setUserId(null);
     setToken(null);
+
+
 
     localStorage.clear();
   };
 
   return (
-    <UserContext.Provider value={{ email, userId, token, login, logout }}>
+    <UserContext.Provider value={{ email, userId, token, login, logoutuser }}>
       {children}
     </UserContext.Provider>
   );
