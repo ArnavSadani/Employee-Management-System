@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AdminContext } from "../context/AdminContext";
+import { useAuth } from "../context/UserContext";
 
 const Navbar = () => {
+
+  const { email } = useAuth();
   const { pathname } = useLocation();
   const { isAdmin, logout } = useContext(AdminContext);
 
@@ -13,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav
+     <nav
       style={{
         display: "flex",
         gap: "20px",
@@ -22,13 +25,15 @@ const Navbar = () => {
         marginBottom: "20px",
       }}
     >
-      <Link style={pathname === "/" ? active : {}} to="/">
+     {pathname!=="/" && <> <Link style={pathname === "/employees" ? active : {}} to="/employees">
         Home
       </Link>
 
       <Link style={pathname === "/apply-leave" ? active : {}} to="/apply-leave">
         Apply Leave
       </Link>
+
+      
 
       {/* ✅ Only Admin can see this */}
       {isAdmin && (
@@ -48,6 +53,10 @@ const Navbar = () => {
       ) : (
         <button onClick={logout}>Logout</button>
       )}
+
+      <p>{email}</p>
+      </>
+    }
     </nav>
   );
 };

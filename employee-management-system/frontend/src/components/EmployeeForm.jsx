@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { getEmployees, deleteEmployee, addEmployee, updateEmployee } from "../services/api";
 import { AdminContext } from "../context/AdminContext";
+import { useAuth } from "../context/UserContext";
 const EmployeeForm = ({ selected, onSuccess }) => {
+
+  const {email} = useAuth();
   const [form, setForm] = useState({
     name: "",
-    email: "",
+    email: email,
     position: "",
     salary: "",
   });
@@ -56,7 +59,7 @@ const EmployeeForm = ({ selected, onSuccess }) => {
     }
 
     // ✅ Reset form
-    setForm({ name: "", email: "", position: "", salary: "" });
+    setForm({ name: "", email: email, position: "", salary: "" });
     setEditMode(false);
 
     // ✅ Refresh list
@@ -80,7 +83,7 @@ const EmployeeForm = ({ selected, onSuccess }) => {
           name="email"
           placeholder="Email"
           value={form.email}
-          onChange={handleChange}
+        
           required
         />
         <input

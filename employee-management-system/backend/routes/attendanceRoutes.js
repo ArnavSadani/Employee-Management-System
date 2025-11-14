@@ -1,39 +1,57 @@
 const express = require("express");
 const router = express.Router();
 const Attendance = require("../models/Attendance");
-const authMiddleware = require("../middleware/authMiddleware");
 
-// ✅ Mark Attendance (Employee)
-router.post("/mark", authMiddleware(["employee", "admin"]), async (req, res) => {
+// MARK ATTENDANCE
+router.post("/mark", async (req, res) => {
   try {
-    const attendance = new Attendance({
-      employee: req.user.id,
-      status: req.body.status || "Present",
-    });
-    await attendance.save();
-    res.json({ message: "Attendance marked successfully" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    const { email, date } = req.body;
+
+    if (!email || !date) {
+      return res.status(400).json({ msg: "Email and date are required" });
+    }
+
+    let record = await Attendance.findOne({ email });
+
+    // If not exists → create new
+    if (!record) {
+      record = new Attendance({ email, dates: [date] });
+      await record.save();
+      return res.json({ msg: "Attendance marked", record });
+    }
+
+    // If already exists, avoid duplicate date
+    if (record.dates.includes(date)) {
+      return res.json({ msg: "Already marked for this date", record });
+    }
+
+    record.dates.push(date);
+    await record.save();
+
+    res.json({ msg: "Attendance marked", record });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server error" });
   }
 });
 
-// ✅ View Own Attendance (Employee)
-router.get("/my", authMiddleware(["employee", "admin"]), async (req, res) => {
+// GET ATTENDANCE FOR CALENDAR
+router.get("/:email", async (req, res) => {
   try {
-    const records = await Attendance.find({ employee: req.user.id }).populate("employee", "name email");
-    res.json(records);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+    const { email } = req.params;
 
-// ✅ View All Attendance (Admin)
-router.get("/all", authMiddleware(["admin"]), async (req, res) => {
-  try {
-    const records = await Attendance.find().populate("employee", "name email");
-    res.json(records);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    const record = await Attendance.findOne({ email });
+
+    if (!record) {
+      return res.json({ dates: [] });
+    }
+
+    res.json({ dates: record.dates });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server error" });
   }
 });
 

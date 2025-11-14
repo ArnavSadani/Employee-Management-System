@@ -1,39 +1,35 @@
+// routes/auth.routes.js
 const express = require("express");
-const router = express.Router();
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const Employee = require("../models/Employee");
+const jwt = require("jsonwebtoken");
 
-// Register employee
-router.post("/register", async (req, res) => {
-  try {
-    const employee = new Employee(req.body);
-    await employee.save();
-    res.json({ message: "Employee Registered Successfully" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+const User = require("../models/user.js");
 
-// Login employee
+const router = express.Router();
+const JWT_SECRET = "SECRET_KEY_CHANGE_THIS"; // <-- change this
+
+// LOGIN ROUTE
 router.post("/login", async (req, res) => {
+  console.log("Login request received");
   try {
     const { email, password } = req.body;
-    const user = await Employee.findOne({ email });
-    if (!user) return res.status(404).json({ message: "User not found" });
+    console.log(email, password);
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(401).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
+    // Create token
+    const token = jwt.sign({ userId: "123", email: email }, JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
-    res.json({ token, role: user.role, name: user.name });
+    res.json({
+      msg: "Login Successful",
+      token,
+      email: email,
+      userId: password,
+    });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.log(err);
+    res.status(500).json({ msg: "Server error" });
   }
 });
 

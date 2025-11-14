@@ -7,6 +7,7 @@ import EmployeeForm from "./components/EmployeeForm";
 import ApplyLeave from "./components/ApplyLeave";
 import ManageLeaves from "./components/ManageLeaves";
 import AdminLogin from "./components/AdminLogin";
+import Login from "./components/Userlogin";
 
 const App = () => {
   return (
@@ -19,13 +20,15 @@ const App = () => {
           <Route
             path="/"
             element={
-              <>
+              <Login/>
+              
+            }
+          />
+          <Route path="/employees" element={ <>
                 <h1>Employee Management System</h1>
                 <EmployeeForm />
              
-              </>
-            }
-          />
+              </>} />
 
           {/* Leave Apply Page */}
           <Route path="/apply-leave" element={<ApplyLeave />} />

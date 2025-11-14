@@ -21,10 +21,10 @@ const employeeRoutes = require("./routes/employeeRoutes");
 app.use("/api/employees", employeeRoutes);
 
 const authRoutes = require("./routes/authRoutes");
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 const attendanceRoutes = require("./routes/attendanceRoutes");
-app.use("/api/attendance", attendanceRoutes);
+app.use("/attendance", attendanceRoutes);
 
 const leaveRoutes = require("./routes/leaveRoutes");
 app.use("/api/leaves", leaveRoutes);
