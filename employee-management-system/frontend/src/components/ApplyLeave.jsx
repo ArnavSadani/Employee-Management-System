@@ -23,42 +23,54 @@ const ApplyLeave = () => {
   };
 
   return (
-    <div>
-      <h2>Apply Leave</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Employee Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="date"
-          name="fromDate"
-          value={form.fromDate}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="date"
-          name="toDate"
-          value={form.toDate}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="reason"
-          placeholder="Reason"
-          value={form.reason}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <div className="form-container">
+  <h2 className="form-title">Apply Leave</h2>
+
+  <form onSubmit={handleSubmit}>
+    <input
+      type="email"
+      name="email"
+      placeholder="Employee Email"
+      value={form.email}
+      onChange={handleChange}
+      required
+      className="form-input"
+    />
+
+    <input
+      type="date"
+      name="fromDate"
+      value={form.fromDate}
+      onChange={handleChange}
+      required
+      className="form-input"
+    />
+
+    <input
+      type="date"
+      name="toDate"
+      value={form.toDate}
+      onChange={handleChange}
+      required
+      className="form-input"
+    />
+
+    <input
+      type="text"
+      name="reason"
+      placeholder="Reason"
+      value={form.reason}
+      onChange={handleChange}
+      required
+      className="form-input"
+    />
+
+    <button type="submit" className="form-btn">
+      Submit
+    </button>
+  </form>
+</div>
+
   );
 };
 
