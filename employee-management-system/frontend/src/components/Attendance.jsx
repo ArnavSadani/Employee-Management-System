@@ -46,15 +46,15 @@ const Attendance = () => {
   };
 
   return (
-    <div style={{ width: "400px", margin: "40px auto" }}>
-      <h2>Attendance Marking</h2>
+<div className="form-container">
+      <h2 className="form-title">Attendance Marking</h2>
 
       <div>
         <label>Email:</label>
-        <input value={email || ""} readOnly style={{ width: "100%" }} />
+        <input value={email || ""} readOnly className="form-input" />
       </div>
 
-      <br />
+  
 
       <div>
         <label>Select Date:</label>
@@ -67,7 +67,7 @@ const Attendance = () => {
 
       <br />
 
-      <button onClick={handleSubmit}>Mark Attendance</button>
+      <button  className="form-btn" onClick={handleSubmit}>Mark Attendance</button>
 
       <style>
         {`
