@@ -55,4 +55,46 @@ router.get("/:email", async (req, res) => {
   }
 });
 
+function isBetween(date, start, end) {
+  return date >= start && date <= end;
+}
+
+// CALCULATE SALARY
+router.post("/calculate", async (req, res) => {
+  try {
+    const { email, fromDate, toDate, wagesPerDay } = req.body;
+
+    if (!email || !fromDate || !toDate || !wagesPerDay) {
+      return res.status(400).json({ msg: "All fields are required" });
+    }
+
+    const record = await Attendance.findOne({ email });
+    
+    if (!record) {
+      return res.json({ salary: 0, presentDays: 0 });
+    }
+
+    const start = new Date(fromDate);
+    const end = new Date(toDate);
+
+    // Convert DB dates (YYYY-MM-DD) to Date objects and filter
+    const presentDays = record.dates.filter((d) => {
+      const dateObj = new Date(d);
+      return isBetween(dateObj, start, end);
+    }).length;
+
+    const salary = presentDays * wagesPerDay;
+
+    res.json({
+      presentDays,
+      salary,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
+
 module.exports = router;

@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-     <nav
+    <nav
       style={{
         display: "flex",
         gap: "20px",
@@ -25,45 +25,54 @@ const Navbar = () => {
         marginBottom: "20px",
       }}
     >
-     {pathname!=="/" && <> 
-     {!isAdmin && 
-      <>
-     <Link style={pathname === "/employees" ? active : {}} to="/employees">
-        Home
-      </Link>
+      {pathname !== "/" && <>
+        {!isAdmin &&
+          <>
+            <Link style={pathname === "/employees" ? active : {}} to="/employees">
+              Home
+            </Link>
 
-      <Link style={pathname === "/apply-leave" ? active : {}} to="/apply-leave">
-        Apply Leave
-      </Link>
+            <Link style={pathname === "/apply-leave" ? active : {}} to="/apply-leave">
+              Apply Leave
+            </Link>
 
-       <Link style={pathname === "/attendance" ? active : {}} to="/attendance">
-        Attendance
-      </Link>
-</>
-     }
+            <Link style={pathname === "/attendance" ? active : {}} to="/attendance">
+              Attendance
+            </Link>
+          </>
+        }
 
-      {/* ✅ Only Admin can see this */}
-      {isAdmin && (
-        <Link
-          style={pathname === "/manage-leaves" ? active : {}}
-          to="/manage-leaves"
-        >
-          Manage Leaves
-        </Link>
-      )}
+        {/* ✅ Only Admin can see this */}
+        {isAdmin && (
+          <Link
+            style={pathname === "/manage-leaves" ? active : {}}
+            to="/manage-leaves"
+          >
+            Manage Leaves
+          </Link>
+        )}
 
-      {/* ✅ Admin Login/Logout */}
-      {!isAdmin ? (
-        <Link style={pathname === "/admin-login" ? active : {}} to="/admin-login">
-          Admin Login
-        </Link>
-      ) : (
-        <button onClick={logout}>Logout</button>
-      )}
+         {isAdmin && (
+          <Link
+            style={pathname === "/salarycount" ? active : {}}
+            to="/salarycount"
+          >
+            Calculate Salary
+          </Link>
+        )}
 
-      <p>{email!==""? "gfhjhg" : email}</p>
+        {/* ✅ Admin Login/Logout */}
+        {!isAdmin ? (
+          <Link style={pathname === "/admin-login" ? active : {}} to="/admin-login">
+            Admin Login
+          </Link>
+        ) : (
+          <button onClick={logout}>Logout</button>
+        )}
+
+        <p>{email !== "" ? "gfhjhg" : email}</p>
       </>
-    }
+      }
     </nav>
   );
 };

@@ -25,4 +25,6 @@ export const markAttendance = (data) => API.post("/attendance/mark", data);
 
 export const getAttendance = (email) => API.get(`/attendance/${email}`);
 
+export const calculateSalary = (data) => API.post("/attendance/calculate", data);
+
 export default API;
