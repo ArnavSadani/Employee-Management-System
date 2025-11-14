@@ -183,3 +183,53 @@
   padding: 12px !important;
   border-radius: 6px;
 }
+
+
+/* Main Navbar */
+.navbar {
+  display: flex;
+  gap: 20px;
+  padding: 15px 25px;
+  background: #e8e8e8;
+  border-bottom: 2px solid #d1d1d1;
+  margin-bottom: 20px;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+}
+
+/* Navbar links */
+.nav-link {
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #333;
+  transition: 0.25s;
+}
+
+/* Hover effect */
+.nav-link:hover {
+  background: #d6d6d6;
+}
+
+/* Active Page */
+.nav-link.active {
+  background: #c2c2c2;
+  font-weight: 600;
+}
+
+/* Logout Buttons */
+.nav-btn {
+  padding: 8px 14px;
+  border: none;
+  background: #d9534f;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: #c0392b;
+}

@@ -18,65 +18,56 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      style={{
-        display: "flex",
-        gap: "20px",
-        padding: "15px",
-        background: "#f0f0f0",
-        marginBottom: "20px",
-      }}
-    >
+    <nav className="navbar">
 
-      {!isAdmin && pathname !== "/" && pathname !== "/admin-login" &&
-        <>
-          <Link style={pathname === "/employees" ? active : {}} to="/employees">
-            Home
-          </Link>
+  {!isAdmin && pathname !== "/" && pathname !== "/admin-login" && (
+    <>
+      <Link className={pathname === "/employees" ? "nav-link active" : "nav-link"} to="/employees">
+        Home
+      </Link>
 
-          <Link style={pathname === "/apply-leave" ? active : {}} to="/apply-leave">
-            Apply Leave
-          </Link>
+      <Link className={pathname === "/apply-leave" ? "nav-link active" : "nav-link"} to="/apply-leave">
+        Apply Leave
+      </Link>
 
-          <Link style={pathname === "/attendance" ? active : {}} to="/attendance">
-            Attendance
-          </Link>
+      <Link className={pathname === "/attendance" ? "nav-link active" : "nav-link"} to="/attendance">
+        Attendance
+      </Link>
 
-          {email !== "" && <button onClick={() => { logoutuser, navigate("/") }}>Logout User</button>}
-        </>
-      }
-
-      {/* ✅ Only Admin can see this */}
-      {isAdmin && (
-        <Link
-          style={pathname === "/manage-leaves" ? active : {}}
-          to="/manage-leaves"
-        >
-          Manage Leaves
-        </Link>
+      {email !== "" && (
+        <button className="nav-btn" onClick={() => { logoutuser(); navigate("/"); }}>
+          Logout User
+        </button>
       )}
+    </>
+  )}
 
-      {isAdmin && (
-        <Link
-          style={pathname === "/salarycount" ? active : {}}
-          to="/salarycount"
-        >
-          Calculate Salary
-        </Link>
-      )}
-      {
-        isAdmin && <button onClick={() => { logout(); navigate("/") }}>Logout Admin</button>
-      }
+  {isAdmin && (
+    <Link className={pathname === "/manage-leaves" ? "nav-link active" : "nav-link"} to="/manage-leaves">
+      Manage Leaves
+    </Link>
+  )}
 
-      {/* ✅ Admin Login/Logout */}
-      {!isAdmin && pathname === "/" &&
-        <Link style={pathname === "/admin-login" ? active : {}} to="/admin-login">
-          Admin Login
-        </Link>
-      }
+  {isAdmin && (
+    <Link className={pathname === "/salarycount" ? "nav-link active" : "nav-link"} to="/salarycount">
+      Calculate Salary
+    </Link>
+  )}
 
+  {isAdmin && (
+    <button className="nav-btn" onClick={() => { logout(); navigate("/"); }}>
+      Logout Admin
+    </button>
+  )}
 
-    </nav>
+  {!isAdmin && pathname === "/" && (
+    <Link className={pathname === "/admin-login" ? "nav-link active" : "nav-link"} to="/admin-login">
+      Admin Login
+    </Link>
+  )}
+
+</nav>
+
   );
 };
 
