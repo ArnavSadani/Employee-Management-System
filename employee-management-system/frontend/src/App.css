@@ -1,16 +1,16 @@
 /* ---------- Theme Colors ---------- */
 :root {
-  --primary-dark: #6f4e37;     /* coffee brown */
-  --primary-darker: #5a3d2b;  /* darker brown */
-  --text-dark: #4b2e2b;       /* heading text */
-  --border-light: #b89f8b;    /* input border */
-  --bg-light: #fffaf5;        /* soft cream */
+  --primary-dark: #6f4e37;
+  --primary-darker: #5a3d2b;
+  --text-dark: #4b2e2b;
+  --border-light: #b89f8b;
+  --bg-light: #fffaf5;
 }
 
-/* ---------- General Container ---------- */
+/* ---------- Form Container ---------- */
 .form-container {
-  width: 320px;
-  margin: 70px auto;
+  width: 330px;
+  margin: 40px auto;
   padding: 25px;
   background: var(--bg-light);
   border: 1px solid var(--border-light);
@@ -19,53 +19,127 @@
   font-family: Arial, sans-serif;
 }
 
-/* ---------- Titles ---------- */
 .form-title {
   text-align: center;
   margin-bottom: 20px;
   color: var(--text-dark);
 }
 
-/* ---------- Input Fields ---------- */
+/* ---------- Inputs ---------- */
 .form-input {
   width: 100%;
   padding: 10px;
+  margin-bottom: 14px;
   font-size: 14px;
   border-radius: 5px;
   border: 1px solid var(--border-light);
   background: #fff;
   outline: none;
-  margin-bottom: 15px;
 }
 
 /* ---------- Buttons ---------- */
-.form-btn {
-  width: 100%;
-  padding: 10px;
-  font-size: 15px;
-  color: white;
-  background: var(--primary-dark);
+.form-btn,
+.toggle-btn,
+.action-btn,
+.delete-btn,
+.cancel-btn {
+  padding: 10px 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s ease;
+  font-size: 14px;
+}
+
+/* Submit button */
+.form-btn {
+  width: 100%;
+  background: var(--primary-dark);
+  color: white;
 }
 
 .form-btn:hover {
   background: var(--primary-darker);
 }
 
-/* ---------- Links ---------- */
-.form-link {
-  display: block;
-  margin-top: 15px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px;
-  color: var(--primary-dark);
+/* Cancel Button */
+.cancel-btn {
+  width: 100%;
+  margin-top: 10px;
+  background: #d9c5b2;
+  color: #3e2723;
 }
 
-.form-link:hover {
-  color: var(--primary-darker);
-  text-decoration: underline;
+.cancel-btn:hover {
+  background: #c7b09b;
+}
+
+/* Toggle button for show/hide table */
+.toggle-btn {
+  display: block;
+  margin: 0 auto;
+  background: var(--primary-dark);
+  color: white;
+  padding: 10px 20px;
+}
+
+.toggle-btn:hover {
+  background: var(--primary-darker);
+}
+
+/* ---------- Table Section ---------- */
+.table-container {
+  width: 90%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.table-title {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+/* ---------- Styled Table ---------- */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid var(--border-light);
+  padding: 10px;
+  text-align: left;
+}
+
+.styled-table th {
+  background: var(--primary-dark);
+  color: white;
+}
+
+/* Row striping */
+.styled-table tr:nth-child(even) {
+  background: #f3e9e2;
+}
+
+/* Action Buttons */
+.action-btn {
+  background: #8d6e63;
+  color: white;
+  margin-right: 8px;
+}
+
+.action-btn:hover {
+  background: #6d4c41;
+}
+
+.delete-btn {
+  background: #c62828;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #8e0000;
 }
