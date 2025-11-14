@@ -65,7 +65,7 @@ const Navbar = () => {
         </Link>
       )}
       {
-        isAdmin && <button onClick={() => { logout(); navigate("/") }}>Logout Admin</button>  
+        isAdmin && <button onClick={() => { logout(); navigate("/") }}>Logout Admin</button>
       }
 
       {/* ✅ Admin Login/Logout */}

@@ -1,42 +1,71 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* ---------- Theme Colors ---------- */
+:root {
+  --primary-dark: #6f4e37;     /* coffee brown */
+  --primary-darker: #5a3d2b;  /* darker brown */
+  --text-dark: #4b2e2b;       /* heading text */
+  --border-light: #b89f8b;    /* input border */
+  --bg-light: #fffaf5;        /* soft cream */
+}
+
+/* ---------- General Container ---------- */
+.form-container {
+  width: 320px;
+  margin: 70px auto;
+  padding: 25px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- Titles ---------- */
+.form-title {
   text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-dark);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ---------- Input Fields ---------- */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid var(--border-light);
+  background: #fff;
+  outline: none;
+  margin-bottom: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* ---------- Buttons ---------- */
+.form-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  background: var(--primary-dark);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.card {
-  padding: 2em;
+.form-btn:hover {
+  background: var(--primary-darker);
 }
 
-.read-the-docs {
-  color: #888;
+/* ---------- Links ---------- */
+.form-link {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--primary-dark);
+}
+
+.form-link:hover {
+  color: var(--primary-darker);
+  text-decoration: underline;
 }

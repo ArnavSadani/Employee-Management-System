@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-
+import "./App.css";
 import EmployeeForm from "./components/EmployeeForm";
 
 import ApplyLeave from "./components/ApplyLeave";

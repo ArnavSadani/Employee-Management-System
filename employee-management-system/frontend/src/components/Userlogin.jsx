@@ -35,31 +35,33 @@ const Login = () => {
   };
 
   return (
-    <div style={{ width: "300px", margin: "50px auto" }}>
-      <h2>Login</h2>
+    <div className="form-container">
+  <h2 className="form-title">Login</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email"
-          onChange={handleChange}
-          required
-        />
-        <br /><br />
+  <form onSubmit={handleSubmit}>
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter Email"
+      className="form-input"
+      onChange={handleChange}
+      required
+    />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-          onChange={handleChange}
-          required
-        />
-        <br /><br />
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter Password"
+      className="form-input"
+      onChange={handleChange}
+      required
+    />
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <button type="submit" className="form-btn">
+      Login
+    </button>
+  </form>
+  </div>
   );
 };
 
