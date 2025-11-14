@@ -21,14 +21,15 @@ const AdminLogin = () => {
   };
 
   return (
-    <div>
-      <h2>Admin Login</h2>
+    <div className="form-container">
+      <h2 className="form-title">Admin Login</h2>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Admin ID"
           value={form.username}
+          className="form-input"
           onChange={(e) => setForm({ ...form, username: e.target.value })}
           required
         />
@@ -39,9 +40,10 @@ const AdminLogin = () => {
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
           required
+          className="form-input"
         />
         <br />
-        <button type="submit">Login</button>
+        <button  className="form-btn" type="submit">Login</button>
       </form>
 
       {error && <p style={{ color: "red" }}>{error}</p>}

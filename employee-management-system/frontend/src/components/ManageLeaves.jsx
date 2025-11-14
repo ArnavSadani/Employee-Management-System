@@ -20,9 +20,9 @@ const ManageLeaves = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Manage Leave Requests</h2>
-      <table border="1" cellPadding="10">
+ <div className="table-container">
+      <h2 className="table-title">Manage Leave Requests</h2>
+      <table className="styled-table">
         <thead>
           <tr>
             <th>Employee Email</th>
