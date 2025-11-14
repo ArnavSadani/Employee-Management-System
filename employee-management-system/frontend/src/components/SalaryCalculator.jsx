@@ -25,8 +25,8 @@ const SalaryCalculator = () => {
   };
 
   return (
-    <div style={{ width: "400px", margin: "40px auto" }}>
-      <h2>Salary Calculator</h2>
+    <div className="form-container">
+      <h2 className="form-title">Salary Calculator</h2>
 
       <label>Email:</label>
       <input
@@ -34,8 +34,9 @@ const SalaryCalculator = () => {
         value={form.email}
         onChange={handleChange}
         type="email"
+         className="form-input"
         required
-        style={{ width: "100%" }}
+     
       />
 
       <br /><br />
@@ -46,7 +47,8 @@ const SalaryCalculator = () => {
         value={form.fromDate}
         onChange={handleChange}
         type="date"
-        style={{ width: "100%" }}
+         className="form-input"
+       
         required
       />
 
@@ -58,7 +60,8 @@ const SalaryCalculator = () => {
         value={form.toDate}
         onChange={handleChange}
         type="date"
-        style={{ width: "100%" }}
+         className="form-input"
+   
         required
       />
 
@@ -70,13 +73,13 @@ const SalaryCalculator = () => {
         value={form.wagesPerDay}
         onChange={handleChange}
         type="number"
-        style={{ width: "100%" }}
+      className="form-input"
         required
       />
 
-      <br /><br />
+      
 
-      <button onClick={handleSubmit}>Calculate Salary</button>
+      <button className="form-btn" onClick={handleSubmit}>Calculate Salary</button>
 
       {result && (
         <div style={{ marginTop: "20px" }}>
