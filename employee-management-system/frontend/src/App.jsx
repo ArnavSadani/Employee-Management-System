@@ -8,6 +8,7 @@ import ApplyLeave from "./components/ApplyLeave";
 import ManageLeaves from "./components/ManageLeaves";
 import AdminLogin from "./components/AdminLogin";
 import Login from "./components/Userlogin";
+import Attendance from "./components/Attendance";
 
 const App = () => {
   return (
@@ -32,10 +33,9 @@ const App = () => {
 
           {/* Leave Apply Page */}
           <Route path="/apply-leave" element={<ApplyLeave />} />
-
-          {/* Admin Leave Management Page */}
+          <Route path="/attendance" element={<Attendance />} />
           <Route path="/manage-leaves" element={<ManageLeaves />} />
-                <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </div>
     </Router>

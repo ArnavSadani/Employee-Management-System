@@ -25,7 +25,10 @@ const Navbar = () => {
         marginBottom: "20px",
       }}
     >
-     {pathname!=="/" && <> <Link style={pathname === "/employees" ? active : {}} to="/employees">
+     {pathname!=="/" && <> 
+     {!isAdmin && 
+      <>
+     <Link style={pathname === "/employees" ? active : {}} to="/employees">
         Home
       </Link>
 
@@ -33,7 +36,11 @@ const Navbar = () => {
         Apply Leave
       </Link>
 
-      
+       <Link style={pathname === "/attendance" ? active : {}} to="/attendance">
+        Attendance
+      </Link>
+</>
+     }
 
       {/* ✅ Only Admin can see this */}
       {isAdmin && (
@@ -54,7 +61,7 @@ const Navbar = () => {
         <button onClick={logout}>Logout</button>
       )}
 
-      <p>{email}</p>
+      <p>{email!==""? "gfhjhg" : email}</p>
       </>
     }
     </nav>
