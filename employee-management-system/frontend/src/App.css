@@ -233,3 +233,94 @@
 .nav-btn:hover {
   background: #c0392b;
 }
+
+
+/* Container */
+.slip-container {
+  width: 550px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.slip-container h2, 
+.slip-container h3 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* Email Form */
+.slip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slip-form label {
+  font-weight: 600;
+}
+
+.slip-form input {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+}
+
+.slip-form input:focus {
+  border-color: #8a6b4f;
+}
+
+/* Button */
+.slip-form button {
+  padding: 10px;
+  background: #8a6b4f; /* neutral brown shade */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.slip-form button:hover {
+  background: #6f543d;
+}
+
+/* Table */
+.slip-table-container {
+  margin-top: 25px;
+}
+
+.slip-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.slip-table th,
+.slip-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.slip-table th {
+  background: #f3f1ed;
+  font-weight: 600;
+}
+
+.slip-table a {
+  color: #6f4e37;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.slip-table a:hover {
+  text-decoration: underline;
+}

@@ -10,6 +10,7 @@ import AdminLogin from "./components/AdminLogin";
 import Login from "./components/Userlogin";
 import Attendance from "./components/Attendance";
 import SalaryCount from "./components/SalaryCalculator";
+import SalarySlip from "./components/SalarySlip";
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/manage-leaves" element={<ManageLeaves />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/salarycount" element={<SalaryCount />} />
+          <Route path="/salaryslip" element={<SalarySlip />} />
         </Routes>
       </div>
     </Router>

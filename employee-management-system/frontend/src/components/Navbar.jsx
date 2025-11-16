@@ -22,9 +22,9 @@ const Navbar = () => {
 
   {!isAdmin && pathname !== "/" && pathname !== "/admin-login" && (
     <>
-      <Link className={pathname === "/employees" ? "nav-link active" : "nav-link"} to="/employees">
+      {/* <Link className={pathname === "/employees" ? "nav-link active" : "nav-link"} to="/employees">
         Home
-      </Link>
+      </Link> */}
 
       <Link className={pathname === "/apply-leave" ? "nav-link active" : "nav-link"} to="/apply-leave">
         Apply Leave
@@ -34,12 +34,26 @@ const Navbar = () => {
         Attendance
       </Link>
 
+      <Link className={pathname === "/salaryslip" ? "nav-link active" : "nav-link"} to="/salaryslip">
+        Salary Slip
+      </Link>
+
+       {/* <Link className={pathname === "/employees" ? "nav-link active" : "nav-link"} to="/employees">
+        Home
+      </Link> */}
+
       {email !== "" && (
         <button className="nav-btn" onClick={() => { logoutuser(); navigate("/"); }}>
           Logout User
         </button>
       )}
     </>
+  )}
+
+    {isAdmin && (
+   <Link className={pathname === "/employees" ? "nav-link active" : "nav-link"} to="/employees">
+        Add Employee
+       </Link>
   )}
 
   {isAdmin && (

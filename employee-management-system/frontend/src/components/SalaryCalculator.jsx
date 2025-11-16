@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { calculateSalary } from "../services/api";
+import { useEffect, useState } from "react";
+import { calculateSalary , generateslip } from "../services/api";
 
 const SalaryCalculator = () => {
   const [form, setForm] = useState({
@@ -23,6 +23,23 @@ const SalaryCalculator = () => {
       alert("Error calculating salary");
     }
   };
+
+  const generateSlip = async () => {
+  try {
+    await generateslip({
+      ...form,
+      result,
+    });
+
+    alert("Salary slip generated successfully!");
+  } catch (err) {
+    console.error(err);
+    alert("Error generating slip");
+  }
+};
+
+
+
 
   return (
     <div className="form-container">
@@ -67,11 +84,11 @@ const SalaryCalculator = () => {
 
       <br /><br />
 
-      <label>Wages per Day:</label>
+      <label>Salary per Day:</label>
       <input
         name="wagesPerDay"
         value={form.wagesPerDay}
-        onChange={handleChange}
+          onChange={handleChange}
         type="number"
       className="form-input"
         required
@@ -82,11 +99,15 @@ const SalaryCalculator = () => {
       <button className="form-btn" onClick={handleSubmit}>Calculate Salary</button>
 
       {result && (
+        <>
         <div style={{ marginTop: "20px" }}>
           <h3>Result</h3>
           <p>Present Days: {result.presentDays}</p>
           <p>Total Salary: ₹{result.salary}</p>
         </div>
+
+        <button className="form-btn" onClick={generateSlip}>Generate Slip</button>
+        </>
       )}
     </div>
   );

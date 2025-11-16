@@ -27,4 +27,10 @@ export const getAttendance = (email) => API.get(`/attendance/${email}`);
 
 export const calculateSalary = (data) => API.post("/attendance/calculate", data);
 
+export const findsalary = (data) => API.get("/attendance/findsalary", data);
+
+export const generateslip = (data) => API.post("/salary/generateslip",data);
+
+export const getallslip = (email) => API.get(`/salary/getallslip/${email}`);
+
 export default API;

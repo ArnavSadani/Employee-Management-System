@@ -29,7 +29,8 @@ app.use("/attendance", attendanceRoutes);
 const leaveRoutes = require("./routes/leaveRoutes");
 app.use("/api/leaves", leaveRoutes);
 
-
+const salaryRoutes = require("./routes/salaryRoutes");
+app.use("/salary", salaryRoutes);
 
 
 const PORT = process.env.PORT || 5000;

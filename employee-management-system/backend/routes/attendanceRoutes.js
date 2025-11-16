@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Attendance = require("../models/Attendance");
+const Employee = require("../models/Employee");
 
 // MARK ATTENDANCE
 router.post("/mark", async (req, res) => {
@@ -95,6 +96,9 @@ router.post("/calculate", async (req, res) => {
     res.status(500).json({ msg: "Server error" });
   }
 });
+
+
+
 
 
 module.exports = router;
