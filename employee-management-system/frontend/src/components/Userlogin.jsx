@@ -28,7 +28,7 @@ const Login = () => {
       login(res.data.email, res.data.userId, res.data.token);
 
       alert("Login Successful!");
-      navigate("/employees");
+      navigate("/attendance");
     } catch (err) {
       alert(err.response?.data?.msg || "Login failed");
     }

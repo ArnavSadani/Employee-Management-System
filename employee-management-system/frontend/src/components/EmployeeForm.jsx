@@ -4,10 +4,10 @@ import { AdminContext } from "../context/AdminContext";
 import { useAuth } from "../context/UserContext";
 const EmployeeForm = ({ selected, onSuccess }) => {
 
-  const {email} = useAuth();
+ 
   const [form, setForm] = useState({
     name: "",
-    email: email,
+    email: "",
     position: "",
     salary: "",
   });
@@ -54,12 +54,13 @@ const EmployeeForm = ({ selected, onSuccess }) => {
 
     } else {
       // ✅ ADD API call
+      console.log(form)
       await addEmployee(form);
 
     }
 
     // ✅ Reset form
-    setForm({ name: "", email: email, position: "", salary: "" });
+    setForm({ name: "", email:"", position: "", salary: "" });
     setEditMode(false);
 
     // ✅ Refresh list
@@ -86,6 +87,7 @@ const EmployeeForm = ({ selected, onSuccess }) => {
       name="email"
       placeholder="Email"
       value={form.email}
+       onChange={handleChange}
       required
       className="form-input"
     />

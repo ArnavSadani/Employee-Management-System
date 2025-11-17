@@ -7,8 +7,9 @@ router.post("/add", async (req, res) => {
   try {  // ✅ ADD THIS
 
     const newEmp = new Employee(req.body);
+   
     await newEmp.save();
-
+ console.log(newEmp);
     res.status(201).json(newEmp);
   } catch (error) {
   // ✅ ADD THIS
@@ -22,7 +23,7 @@ router.get("/", async (req, res) => {
   try {
     const employees = await Employee.find();
 
-
+    console.log(employees)
     res.json(employees);
   } catch (error) {
     res.status(500).json({ message: error.message });
